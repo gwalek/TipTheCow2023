@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class TapToTip : MonoBehaviour
 {
-    // Camera 
+    public Camera gameCamera; 
 
-    /*
-     * 
-     *  RaycastHit hit;
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-        
-        if (Physics.Raycast(ray, out hit)) {
-            Transform objectHit = hit.transform;
-            
-            // Do something with the object that was hit by the raycast.
-        }
-     */
+    
 
 
     // Start is called before the first frame update
@@ -54,6 +44,20 @@ public class TapToTip : MonoBehaviour
 
     void CheckTapAt(Vector2 location)
     {
-        Debug.Log("location: " + location); 
+        Debug.Log("location: " + location);
+        RaycastHit hit;
+        Ray ray = gameCamera.ScreenPointToRay(location);
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            Cow cow = hit.collider.GetComponentInParent<Cow>(); 
+
+            if (cow)
+            {
+                cow.TipOver(); 
+            }
+
+            // Do something with the object that was hit by the raycast.
+        }
     }
 }
