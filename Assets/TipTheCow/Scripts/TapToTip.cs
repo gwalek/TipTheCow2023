@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TapToTip : MonoBehaviour
 {
-    public Camera gameCamera; 
-
+    
+    public Camera gameCamera;
+    public bool IsInGameplay = true; 
     
 
 
@@ -18,6 +19,12 @@ public class TapToTip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!IsInGameplay)
+        {
+            return; 
+        }
+
+
         if (Input.touchSupported)
         {
             TouchScreenInput(); 
@@ -56,8 +63,6 @@ public class TapToTip : MonoBehaviour
             {
                 cow.TipOver(); 
             }
-
-            // Do something with the object that was hit by the raycast.
         }
     }
 }
