@@ -68,6 +68,11 @@ public class Cow : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (Mathf.Abs(location.y) >= RemoveAtYof)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void TipOver()
