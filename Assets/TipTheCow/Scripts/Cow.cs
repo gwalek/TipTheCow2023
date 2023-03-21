@@ -69,7 +69,7 @@ public class Cow : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (Mathf.Abs(location.y) >= RemoveAtYof)
+        if (Mathf.Abs(location.y) <= RemoveAtYof)
         {
             Destroy(gameObject);
         }
